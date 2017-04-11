@@ -45,6 +45,17 @@ public class CmdServiceImpl implements CmdService
 		return memberVo;
 	}
 
+	@Override
+	public void memberJoin(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		try {
+			this.commonDao.insertData("cmd.userJoin", map);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 
 }//end class
 

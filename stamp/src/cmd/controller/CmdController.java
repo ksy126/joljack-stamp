@@ -49,6 +49,21 @@ public class CmdController
 		return "member/join";
 	}
 	
+	/**
+	 * 회원 가입
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value="/join.do")
+	public ModelAndView saveProduct(@RequestParam Map<String, Object> 	pMap) {		
+		
+		cmdService.memberJoin(pMap);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("jsonView");
+		return mav;		
+	}
+	
 	/*
 	 * 로그인 처리 프로세스
 	 */

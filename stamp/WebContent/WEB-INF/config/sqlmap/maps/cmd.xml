@@ -4,19 +4,57 @@
 <mapper namespace="cmd">
 
 	<insert id="userJoin" parameterType="map">
-	INSERT INTO
-		member
-		(
-			user_id
-			, user_pwd
-			, user_name
-		)
-	VALUES
-		(
-			#{user_id}
-			, #{user_pwd}
-			, #{user_name}
-		)
+		INSERT INTO
+			member
+			(
+				user_id
+				, user_pwd
+				, user_name
+			)
+		VALUES
+			(
+				#{user_id}
+				, #{user_pwd}
+				, #{user_name}
+			)
 	</insert>
+	
+	<select id="selectStampInfo" parameterType="map" resultType="cmd.vo.StampVO">
+		SELECT
+			*
+		FROM
+			stamp
+		WHERE
+			member_no = #{member_no}
+			AND
+			company_no = #{company_no}
+	</select>
+	
+	<insert id="insertStamp" parameterType="map">
+		INSERT INTO
+			stamp
+			(
+				member_no
+				, company_no
+				, stamp_count
+			)
+		VALUES
+			(
+				#{member_no}
+				, #{company_no}
+				, #{stamp_count}
+			)
+	</insert>
+	
+	<update id="updateStamp" parameterType="map">
+		UPDATE
+			stamp
+		SET
+			stamp_count = #{stamp_count}
+		WHERE
+			member_no = #{member_no}
+			AND
+			company_no = #{company_no}
+	</update>
 	
 </mapper>
